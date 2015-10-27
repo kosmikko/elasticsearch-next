@@ -2,7 +2,7 @@
   "name": "elasticsearch-next",
   "version": "0.0.1",
   "description": "elasticsearch driver with async/await support",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
     "test": "mocha --compilers js:babel/register",
     "build": "babel src --out-dir lib",
