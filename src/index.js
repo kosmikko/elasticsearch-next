@@ -3,10 +3,7 @@ import elasticsearch from 'elasticsearch'
 export default class ElasticsearchNext {
 
   constructor(clientOpts) {
-    this.client = new elasticsearch.Client({
-      host: 'localhost:9200',
-      debug: true
-    })
+    this.client = new elasticsearch.Client(clientOpts)
   }
 
   async create(data) {
