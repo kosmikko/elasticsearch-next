@@ -1,0 +1,22 @@
+{
+  "name": "elasticsearch-next",
+  "version": "0.0.1",
+  "description": "elasticsearch driver with async/await support",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --compilers js:babel/register"
+  },
+  "author": {
+    "name": "Mikko Lehtinen",
+    "email": "m@mikkolehtinen.com"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "elasticsearch": "^8.2.0"
+  },
+  "devDependencies": {
+    "babel": "^5.8.29",
+    "mocha": "^2.3.3",
+    "should": "^7.1.1"
+  }
+}
