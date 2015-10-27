@@ -17,6 +17,10 @@ describe('CRUD tests', () => {
     es = new ESN({host: 'localhost:9200'})
   })
 
+  after(async() => {
+    return await es.indexDelete(getOpts())
+  })
+
   it('should create a new document', async () => {
     let opts = getOpts({
       body: {
@@ -56,7 +60,7 @@ describe('CRUD tests', () => {
   })
 
   it('should search documents', async () => {
-    let refresh = await es.refresh(getOpts({}))
+    let refresh = await es.indexRefresh(getOpts({}))
     let opts = getOpts({
       body: {
         filter: {
@@ -65,12 +69,19 @@ describe('CRUD tests', () => {
       }
     })
     let res = await es.search(opts)
-    console.log(JSON.stringify(res,null,2))
+    should.exist(res.hits)
+    res.hits.hits.length.should.equal(1)
   })
 
   it('should delete document', async () => {
     let opts = getOpts({id: id})
     let res = await es.delete(opts)
-    console.log(res)
+    res.found.should.equal(true)
+  })
+
+  it('should get mapping', async () => {
+    let res = await es.mappingGet(getOpts())
+    should.exist(res.foo.mappings)
+    // console.log(JSON.stringify(res, null, 2))
   })
 })

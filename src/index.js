@@ -26,7 +26,30 @@ export default class ElasticsearchNext {
     return await this.client.delete(opts)
   }
 
-  async refresh(opts) {
+  // index operations:
+  async indexCreate(opts) {
+    return await this.client.indices.create(opts)
+  }
+
+  async indexDelete(opts) {
+    return await this.client.indices.delete(opts)
+  }
+
+  async indexRefresh(opts) {
     return await this.client.indices.refresh(opts)
   }
+
+  // mapping operations:
+  async mappingUpdate(opts) {
+    return await this.client.indices.putMapping(opts)
+  }
+
+  async mappingGet(opts) {
+    return await this.client.indices.getMapping(opts)
+  }
+
+  async mappingDelete(opts) {
+    return await this.client.indices.deleteMapping(opts)
+  }
+
 }
